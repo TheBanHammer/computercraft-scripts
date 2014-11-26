@@ -10,6 +10,10 @@
 local version = 0.2
 
 print("Reactor/Capacitor Manager v"..version)
+
+local file = fs.open("startup", "w")
+file.write("shell.run(\"capcheck\")")
+file.close()
  
 local upper = 0.95 --Upper limit for computer to stop transmitting redstone signal. 0.90=90% full.
 local lower = 0.20 --Lower limit for computer to start transmitting redstone signal.
@@ -233,9 +237,8 @@ while true do
     monitor.setCursorPos(22,cursorY)
     monitor.write(displayEnergyProduced)
 
-    
-
     cursorY = cursorY + 1
+    
   end
     
   sleep(1)
